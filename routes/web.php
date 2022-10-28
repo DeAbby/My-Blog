@@ -42,6 +42,9 @@ Route::put('/admin/posts/{id}/update',
 'App\Http\Controllers\Admin\AdminPostController@update')->name("admin.post.update");
 });
 
+Route::post('/comment/store', 'App\Http\Controllers\CommentController@store')->name('comment.add');
+Route::post('/reply/store', 'App\Http\Controllers\CommentController@replyStore')->name('reply.add');
+
 
 
     

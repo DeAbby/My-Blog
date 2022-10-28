@@ -14,7 +14,6 @@ class PostController extends Controller
         $viewData = [];
         $post = Posts::findOrFail($id);
         //$posts = PostController::$posts[$id-1];
-
         $viewData["title"] = $post->getTitle()." - My Blog";
         $viewData["post"] = $post;
         return view('posts.info')->with("viewData", $viewData);

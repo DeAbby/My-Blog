@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->integer('date');
-            $table->text('description');
-            $table->string('image');
-            $table->timestamps();
-        });
+    Schema::create('comments', function(Blueprint $table){
+        $table->integer('id');
+        $table->integer('user_id')->unsigned();
+        $table->integer('posts_id')->unsigned();
+        $table->integer('parent_id')->unsigned()->nullable();
+        $table->text('comment');
+        $table->timestamps();
+        $table->softDeletes();
+    });
     }
-
 
     /**
      * Reverse the migrations.
@@ -31,6 +31,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('comments');
+
     }
 };
